@@ -1,0 +1,9 @@
+{
+  "name": "opencv",
+  "version": "0.0.0",
+  "files": [
+    "opencv.js"
+  ],
+  "module": "opencv.js",
+  "sideEffects": false
+}
