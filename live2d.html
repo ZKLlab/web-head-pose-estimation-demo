@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!--suppress CssUnusedSymbol -->
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #live2d-widget, #live2dcanvas {
+      position: static !important;
+    }
+  </style>
+</head>
+<body>
+<script src="lib/L2Dwidget.min.js"></script>
+<script>
+const apiPath = 'https://api.zsq.im/live2d';
+window.addEventListener('load', function () {
+  'use strict';
+  L2Dwidget.init({
+    display: {
+      width: '400',
+      height: '400',
+    },
+    model: {
+      jsonPath: `${apiPath}/get/?id=${getQueryVariable('m', 1)}-${getQueryVariable('t', 53)}`,
+    },
+  });
+});
+
+function getQueryVariable(variable, _default) {
+  const query = window.location.search.substring(1);
+  const vars = query.split('&');
+  for (let i = 0; i < vars.length; i++) {
+    const pair = vars[i].split('=');
+    if (decodeURIComponent(pair[0]) === variable) {
+      return decodeURIComponent(pair[1]);
+    }
+  }
+  return _default;
+}
+</script>
+</body>
+</html>
